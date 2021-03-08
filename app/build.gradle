@@ -11,6 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.abdulmughni.personal.thefortnightly"
+        buildConfigField("String", "API_KEY", '"2qsGNUijOAWfuGOUaRydgP1STtA63z3K"')
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -57,4 +58,9 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
+
+    //Network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 }

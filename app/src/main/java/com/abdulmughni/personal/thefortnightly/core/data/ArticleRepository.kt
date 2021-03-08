@@ -43,9 +43,8 @@ class ArticleRepository private constructor(
                 localDataSource.insertArticle(articleList)
             }
 
-            override fun createCall(): LiveData<ApiResponse<List<ResultsItem>>> {
-                TODO("Not yet implemented")
-            }
+            override fun createCall(): LiveData<ApiResponse<List<ResultsItem>>> =
+                remoteDataSource.getAllArticle()
 
             override fun shouldFetch(data: List<Article>?): Boolean =
                 data == null || data.isEmpty()
