@@ -13,7 +13,7 @@ import com.abdulmughni.personal.thefortnightly.core.utils.AppExecutors
 
 object Injection {
 
-    fun provideRepository(context: Context): IArticleRepository {
+    private fun provideRepository(context: Context): IArticleRepository {
         val database = ArticleDatabase.getInstance(context)
 
         val remoteDataSource = RemoteDataSource.getInstance(ApiConfig.provideApiService())
@@ -25,6 +25,6 @@ object Injection {
 
     fun provideArticleUseCase(context: Context): ArticleUseCase {
         val repository = provideRepository(context)
-        return ArticleInteractor(repository as ArticleRepository)
+        return ArticleInteractor(repository)
     }
 }

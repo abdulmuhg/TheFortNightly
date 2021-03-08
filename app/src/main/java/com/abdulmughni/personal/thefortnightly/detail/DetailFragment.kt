@@ -10,6 +10,8 @@ import com.abdulmughni.personal.thefortnightly.R
 class DetailFragment : Fragment() {
 
     companion object {
+        const val EXTRA_DATA = "extra_data"
+
         fun newInstance() = DetailFragment()
     }
 

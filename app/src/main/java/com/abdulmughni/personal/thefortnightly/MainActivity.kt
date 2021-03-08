@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(),  NavigationView.OnNavigationItemSelect
         var fragment: Fragment? = null
         when (item.itemId) {
             R.id.nav_home -> {
-                fragment = HomeFragment()
+                fragment = HomeFragment.newInstance()
                 title = getString(R.string.menu_home)
             }
             R.id.nav_bookmark -> {

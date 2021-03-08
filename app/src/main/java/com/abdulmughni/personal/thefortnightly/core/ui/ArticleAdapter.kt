@@ -32,7 +32,6 @@ class ArticleAdapter: RecyclerView.Adapter<ArticleAdapter.ListViewHolder>() {
                 titleText.text = data.title
                 categoryText.text = data.itemType
                 description.text = data.abstracts
-                author.text = data.byLine
                 publishTimeText.text = data.publishedDate
             }
         }

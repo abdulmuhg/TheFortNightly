@@ -47,7 +47,8 @@ class ArticleRepository private constructor(
                 remoteDataSource.getAllArticle()
 
             override fun shouldFetch(data: List<Article>?): Boolean =
-                data == null || data.isEmpty()
+                //data == null || data.isEmpty()
+                    true
 
         }.asLiveData()
 

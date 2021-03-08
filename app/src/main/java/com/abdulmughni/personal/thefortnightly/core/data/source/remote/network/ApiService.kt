@@ -1,7 +1,6 @@
 package com.abdulmughni.personal.thefortnightly.core.data.source.remote.network
 
 import com.abdulmughni.personal.thefortnightly.BuildConfig
-import com.abdulmughni.personal.thefortnightly.core.data.source.remote.network.ApiService.Companion.API_KEY
 import com.abdulmughni.personal.thefortnightly.core.data.source.remote.response.TopStoriesResponse
 import retrofit2.Call
 import retrofit2.http.GET

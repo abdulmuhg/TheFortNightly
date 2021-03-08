@@ -18,7 +18,9 @@ class ViewModelFactory private constructor(private val articleUseCase: ArticleUs
 
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideArticleUseCase(context))
+                instance ?: ViewModelFactory(
+                        Injection.provideArticleUseCase(context)
+                )
             }
     }
 

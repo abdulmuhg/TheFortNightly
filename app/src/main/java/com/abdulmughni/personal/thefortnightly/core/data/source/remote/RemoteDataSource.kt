@@ -1,4 +1,5 @@
 package com.abdulmughni.personal.thefortnightly.core.data.source.remote
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,7 +33,7 @@ class RemoteDataSource private constructor(private val apiService: ApiService){
                 response: Response<TopStoriesResponse>
             ) {
                 val dataArray = response.body()?.results
-                if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
+                resultData.value = if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
             }
             override fun onFailure(call: Call<TopStoriesResponse>, t: Throwable) {
                 resultData.value = ApiResponse.Error(t.message.toString())
