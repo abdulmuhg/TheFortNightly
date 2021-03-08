@@ -18,8 +18,8 @@ data class ArticleEntity(
     @ColumnInfo(name = "title")
     var title: String,
 
-    @ColumnInfo(name = "abstract")
-    var abstract: String,
+    @ColumnInfo(name = "abstracts")
+    var abstracts: String,
 
     @ColumnInfo(name = "item_type")
     var itemType: String,
@@ -37,5 +37,14 @@ data class ArticleEntity(
     var materialTypeFacet: String,
 
     @ColumnInfo(name = "kicker")
-    var kicker: String
+    var kicker: String,
+
+    @ColumnInfo(name = "url")
+    var url: String,
+
+    @ColumnInfo(name = "short_url")
+    var shortUrl: String,
+
+    @ColumnInfo(name = "isBookmarked")
+    var isBookmarked: Boolean = false
 ) : Parcelable

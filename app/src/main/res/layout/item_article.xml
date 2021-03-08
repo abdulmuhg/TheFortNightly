@@ -12,7 +12,6 @@
         android:id="@+id/urlText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{article.urlToImage}"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="center"
-        android:src="@{adapterVal.urlToImage}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

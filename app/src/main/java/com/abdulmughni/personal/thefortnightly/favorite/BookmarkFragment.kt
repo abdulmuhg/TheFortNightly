@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.abdulmughni.personal.thefortnightly.R
 
-class FavoriteFragment : Fragment() {
+class BookmarkFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FavoriteFragment()
+        fun newInstance() = BookmarkFragment()
     }
 
-    private lateinit var viewModel: FavoriteViewModel
+    private lateinit var viewModel: BookmarkViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +25,6 @@ class FavoriteFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
