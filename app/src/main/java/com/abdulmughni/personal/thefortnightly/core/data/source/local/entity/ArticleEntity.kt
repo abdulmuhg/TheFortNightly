@@ -13,7 +13,7 @@ data class ArticleEntity(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "articleId")
-    var articleId: Int,
+    var articleId: Int = 0,
 
     @ColumnInfo(name = "title")
     var title: String,
@@ -23,6 +23,9 @@ data class ArticleEntity(
 
     @ColumnInfo(name = "item_type")
     var itemType: String,
+
+    @ColumnInfo(name = "byLine")
+    var byLine: String,
 
     @ColumnInfo(name = "update_date")
     var updateDate: String,
@@ -41,6 +44,9 @@ data class ArticleEntity(
 
     @ColumnInfo(name = "url")
     var url: String,
+
+    @ColumnInfo(name = "thumbnail")
+    var thumbnail: String,
 
     @ColumnInfo(name = "short_url")
     var shortUrl: String,

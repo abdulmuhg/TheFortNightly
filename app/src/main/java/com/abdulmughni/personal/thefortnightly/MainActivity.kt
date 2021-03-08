@@ -1,13 +1,13 @@
 package com.abdulmughni.personal.thefortnightly
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.abdulmughni.personal.thefortnightly.databinding.ActivityMainBinding
-import com.abdulmughni.personal.thefortnightly.favorite.BookmarkFragment
+import com.abdulmughni.personal.thefortnightly.bookmark.BookmarkFragment
 import com.abdulmughni.personal.thefortnightly.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -42,11 +42,10 @@ class MainActivity : AppCompatActivity(),  NavigationView.OnNavigationItemSelect
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var fragment: Fragment? = null
-        var title = getString(R.string.app_name)
         when (item.itemId) {
             R.id.nav_home -> {
                 fragment = HomeFragment()
-                title = getString(R.string.app_name)
+                title = getString(R.string.menu_home)
             }
             R.id.nav_bookmark -> {
                 fragment = BookmarkFragment()

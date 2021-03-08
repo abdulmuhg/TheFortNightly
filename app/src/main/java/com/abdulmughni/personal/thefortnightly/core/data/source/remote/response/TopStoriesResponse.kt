@@ -1,9 +1,5 @@
 package com.abdulmughni.personal.thefortnightly.core.data.source.remote.response
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
-
 data class TopStoriesResponse(
 	val copyright: String? = null,
 	val lastUpdated: String? = null,
