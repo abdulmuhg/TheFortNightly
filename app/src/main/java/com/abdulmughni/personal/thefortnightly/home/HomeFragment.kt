@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abdulmughni.personal.thefortnightly.DummyActivity
 import com.abdulmughni.personal.thefortnightly.R
 import com.abdulmughni.personal.thefortnightly.core.data.Resource
 import com.abdulmughni.personal.thefortnightly.core.ui.ArticleAdapter
@@ -38,9 +41,9 @@ class HomeFragment : Fragment() {
         if (activity != null) {
             val articleAdapter = ArticleAdapter()
             articleAdapter.onItemClick = { selectedData ->
-//                val intent = Intent(activity, DetailFragment::class.java)
-//                intent.putExtra(DetailFragment.EXTRA_DATA, selectedData)
-//                startActivity(intent)
+                val intent = Intent(activity, DummyActivity::class.java)
+                //intent.putExtra(DetailFragment.EXTRA_DATA, selectedData)
+                startActivity(intent)
             }
 
             val factory = ViewModelFactory.getInstance(requireActivity())
