@@ -10,6 +10,10 @@ import com.abdulmughni.personal.thefortnightly.core.domain.model.Article
 import com.abdulmughni.personal.thefortnightly.core.domain.repository.IArticleRepository
 import com.abdulmughni.personal.thefortnightly.core.utils.AppExecutors
 import com.abdulmughni.personal.thefortnightly.core.utils.DataMapper
+import io.reactivex.Flowable
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ArticleRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
@@ -30,39 +34,33 @@ class ArticleRepository private constructor(
             }
     }
 
-    override fun getAllArticle(): LiveData<Resource<List<Article>>> =
+    override fun getAllArticle(): Flowable<Resource<List<Article>>> =
         object : NetworkBoundResource<List<Article>, List<ResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<Article>> {
-                return Transformations.map(localDataSource.getAllArticle()) {
-                    DataMapper.mapEntitiesToDomain(it)
+
+            override fun loadFromDB(): Flowable<List<Article>> {
+                return localDataSource.getAllArticle().map { DataMapper.mapEntitiesToDomain(it) }
                 }
-            }
+
+            override fun shouldFetch(data: List<Article>?): Boolean =
+                data == null || data.isEmpty()
+
+            override fun createCall(): Flowable<ApiResponse<List<ResultsItem>>> =
+                remoteDataSource.getAllArticle()
 
             override fun saveCallResult(data: List<ResultsItem>) {
                 val articleList = DataMapper.mapResponsesToEntities(data)
                 localDataSource.insertArticle(articleList)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
             }
+        }.asFlowable()
 
-            override fun createCall(): LiveData<ApiResponse<List<ResultsItem>>> =
-                remoteDataSource.getAllArticle()
-
-            override fun shouldFetch(data: List<Article>?): Boolean =
-                //data == null || data.isEmpty()
-                    true
-
-        }.asLiveData()
-
-    override fun getBookmarkedArticle(): LiveData<List<Article>> {
-        return Transformations.map(localDataSource.getAllBookmarkedArticle()) {
-            DataMapper.mapEntitiesToDomain(it)
-        }
+    override fun getBookmarkedArticle(): Flowable<List<Article>> {
+        return localDataSource.getAllBookmarkedArticle().map {DataMapper.mapEntitiesToDomain(it)}
     }
 
     override fun updateBookmarkArticle(article: Article, state: Boolean) {
-        TODO("Not yet implemented")
-    }
-
-    fun setBookmarkArticle(article: Article, state: Boolean) {
         val bookmarkEntity = DataMapper.mapDomainToEntity(article)
         appExecutors.diskIO()
             .execute { localDataSource.updateBookmarkArticle(bookmarkEntity, state) }
