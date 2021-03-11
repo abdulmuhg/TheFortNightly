@@ -1,22 +1,31 @@
 package com.abdulmughni.personal.thefortnightly.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abdulmughni.personal.thefortnightly.MyApplication
 import com.abdulmughni.personal.thefortnightly.R
 import com.abdulmughni.personal.thefortnightly.core.data.Resource
 import com.abdulmughni.personal.thefortnightly.core.ui.ArticleAdapter
 import com.abdulmughni.personal.thefortnightly.core.ui.ViewModelFactory
 import com.abdulmughni.personal.thefortnightly.databinding.HomeFragmentBinding
 import com.abdulmughni.personal.thefortnightly.detail.DetailActivity
+import javax.inject.Inject
 
 class HomeFragment : Fragment() {
-    private lateinit var homeViewModel: HomeViewModel
+
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val homeViewModel: HomeViewModel by viewModels {
+        factory
+    }
 
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
@@ -25,8 +34,15 @@ class HomeFragment : Fragment() {
         fun newInstance() = HomeFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as MyApplication).appComponent.inject(this)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,10 +57,6 @@ class HomeFragment : Fragment() {
                 //intent.putExtra(DetailFragment.EXTRA_DATA, selectedData)
                 startActivity(intent)
             }
-
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-
             homeViewModel.article.observe(viewLifecycleOwner, { article ->
                 if (article != null) {
                     when (article) {
