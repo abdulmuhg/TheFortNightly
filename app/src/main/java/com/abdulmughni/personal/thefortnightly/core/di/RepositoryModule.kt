@@ -4,8 +4,11 @@ import com.abdulmughni.personal.thefortnightly.core.data.ArticleRepository
 import com.abdulmughni.personal.thefortnightly.core.domain.repository.IArticleRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
-@Module(includes = [NetworkModule::class, DatabaseModule::class])
+@Module
+@InstallIn(ApplicationComponent::class)
 abstract class RepositoryModule {
 
     @Binds

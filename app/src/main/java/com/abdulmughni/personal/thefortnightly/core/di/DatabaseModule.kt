@@ -6,14 +6,18 @@ import com.abdulmughni.personal.thefortnightly.core.data.source.local.room.Artic
 import com.abdulmughni.personal.thefortnightly.core.data.source.local.room.ArticleDatabase
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(context: Context): ArticleDatabase = Room.databaseBuilder(
+    fun provideDatabase(@ApplicationContext context: Context): ArticleDatabase = Room.databaseBuilder(
         context,
         ArticleDatabase::class.java, "Tourism.db"
     ).fallbackToDestructiveMigration().build()

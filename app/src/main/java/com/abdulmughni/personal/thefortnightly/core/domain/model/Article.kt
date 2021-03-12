@@ -6,6 +6,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Article(
     var articleId: String,
+    var section: String,
+    var subsection: String,
     var title: String,
     var abstracts: String,
     var itemType: String,

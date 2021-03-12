@@ -21,7 +21,9 @@ object DataMapper {
                 shortUrl = it.shortUrl!!,
                 updateDate = it.updatedDate!!,
                 createdDate = it.createdDate!!,
-                isBookmarked = false
+                isBookmarked = false,
+                section = it.section!!,
+                subsection = it.subsection!!
             )
             tourismList.add(tourism)
         }
@@ -44,7 +46,9 @@ object DataMapper {
                 shortUrl = it.shortUrl,
                 updateDate = it.updateDate,
                 createdDate = it.createdDate,
-                isBookmarked = it.isBookmarked
+                isBookmarked = it.isBookmarked,
+                section = it.section,
+                subsection = it.subsection
             )
         }
 
@@ -62,6 +66,8 @@ object DataMapper {
         shortUrl = input.shortUrl,
         updateDate = input.updateDate,
         createdDate = input.createdDate,
-        isBookmarked = input.isBookmarked
+        isBookmarked = input.isBookmarked,
+        section = input.section,
+        subsection = input.subsection
     )
 }

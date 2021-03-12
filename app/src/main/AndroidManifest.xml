@@ -12,7 +12,12 @@ package="com.abdulmughni.personal.thefortnightly">
     android:supportsRtl="true"
     android:theme="@style/Theme.TheFortNightly">
     <activity android:name=".SplashActivity" />
-    <activity android:name=".detail.DetailActivity"></activity>
+    <activity
+        android:name=".detail.DetailArticleActivity"
+        android:parentActivityName=".MainActivity" />
+    <activity
+        android:name=".detail.DetailReadArticleActivity"
+        android:parentActivityName=".MainActivity" />
     <activity
         android:name=".MainActivity"
         android:theme="@style/Theme.TheFortNightly.NoActionBar">

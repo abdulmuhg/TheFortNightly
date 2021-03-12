@@ -10,7 +10,9 @@ import com.abdulmughni.personal.thefortnightly.databinding.ActivityMainBinding
 import com.abdulmughni.personal.thefortnightly.bookmark.BookmarkFragment
 import com.abdulmughni.personal.thefortnightly.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(),  NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
