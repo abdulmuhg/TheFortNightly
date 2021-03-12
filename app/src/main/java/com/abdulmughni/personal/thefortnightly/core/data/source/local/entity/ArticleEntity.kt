@@ -46,7 +46,7 @@ data class ArticleEntity(
     var url: String,
 
     @ColumnInfo(name = "thumbnail")
-    var thumbnail: String,
+    var thumbnail: String?,
 
     @ColumnInfo(name = "short_url")
     var shortUrl: String,

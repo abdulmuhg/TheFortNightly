@@ -17,7 +17,7 @@ object DataMapper {
                 materialTypeFacet = it.materialTypeFacet!!,
                 kicker = it.kicker!!,
                 url = it.url!!,
-                thumbnail = it.multimedia?.get(0)?.url!!,
+                thumbnail = it.multimedia?.get(0)?.url,
                 shortUrl = it.shortUrl!!,
                 updateDate = it.updatedDate!!,
                 createdDate = it.createdDate!!,

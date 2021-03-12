@@ -1,14 +1,13 @@
 package com.abdulmughni.personal.thefortnightly.core.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.abdulmughni.personal.thefortnightly.core.data.Resource
 import com.abdulmughni.personal.thefortnightly.core.domain.model.Article
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
 
 interface IArticleRepository {
-    fun getAllArticle(): Flowable<Resource<List<Article>>>
+    fun getAllArticle(): Flow<Resource<List<Article>>>
 
-    fun getBookmarkedArticle(): Flowable<List<Article>>
+    fun getBookmarkedArticle(): Flow<List<Article>>
 
     fun updateBookmarkArticle(article: Article, state: Boolean)
 }
