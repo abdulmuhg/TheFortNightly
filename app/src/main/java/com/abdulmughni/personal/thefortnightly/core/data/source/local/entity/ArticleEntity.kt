@@ -52,5 +52,12 @@ data class ArticleEntity(
     var shortUrl: String,
 
     @ColumnInfo(name = "isBookmarked")
-    var isBookmarked: Boolean = false
+    var isBookmarked: Boolean = false,
+
+    @ColumnInfo(name = "section")
+    var section: String,
+
+    @ColumnInfo(name = "subsection")
+    var subsection: String
+
 ) : Parcelable
